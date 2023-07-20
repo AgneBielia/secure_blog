@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+{{#if post}}
+    <article class="container w-75">
+        <div class="bg-dark rounded-3 py-3 px-3 card shadow-lg my-3 border-light border-opacity-10">
+            <header class="vstack gap-2 pb-4 justify-content-between">
+                <div class="d-flex justify-content-between">
+                    <h1>{{post.title}}</h1>
+                    {{#if edit}}
+                        <div class="hstack gap-1">
+                            <a href="/posts/{{post.id}}/edit" role="button" class="collapse-horizontal h-75 h3 btn btn-outline-success bi bi-pen-fill"><span class="d-none d-md-inline"> Edit post</span></a>
+                            <button role="button" data-bs-toggle="modal" data-bs-target="#deletePost" class="h-75 h3 btn btn-outline-secondary bi bi-trash"> <span class="d-none d-md-inline"> Delete Post</span></button>
+                            {{> deletePost }}
+                        </div>
+                    {{/if}}
+                </div>
+                <p class="text-light text-opacity-50 small">Posted by <span
+                        class="text-capitalize">{{post.author}}</span> on {{post.created_at}} {{#if post.edited}}(Edited){{/if}}</p>
+            </header>
+            <p class="opacity-75">{{post.content}}</p>
+            <div class="px-3 text-light text-opacity-75">
+                <i class="bi bi-chat" aria-placeholder="Comments:"></i>
+                {{post.comment_count}}
+            </div>
+        </div>
+    </article>
+{{else}}
+    <i class="d-flex justify-content-center pt-5 text-danger h1 bi bi-heartbreak"></i>
+    <h3 class="d-flex justify-content-center py-5 opacity-50">The post you are looking for does not exist</h3>
+{{/if}}
+{{#if comments}}
+    <div class="container w-75">
+        <h5 id="comments">Comments:</h5>
+        {{#each comments}}
+            <div class="hstack gap-3 bg-dark rounded-3 p-2 mb-2 card shadow-lg border-success border-5">
+                <div style="width: 10%;" class="vstack">
+                    <i class="text-center fs-2 bi bi-person-circle"></i>
+                    <div class="small text-capitalize text-center">{{this.author}}</div>
+                </div>
+                <div class="w-75 vstack">
+                    <div class="text-end align-text-top small text-white-50">{{this.created_at}}</div>
+                    <div class="p-1">{{this.content}}</div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+{{/if}}
+</body>
+</html>

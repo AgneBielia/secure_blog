@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<h5 class="text-center pt-5 pb-3">Register</h5>
+<div class="container">
+    <div class="card m-auto w-50 border-0 bg-dark">
+        <div class="form-signin w-100 m-auto">
+            <form action="/auth/register" method="POST">
+                <div class="mb-3">
+                    <label for="name-reg" class="form-label">Name</label>
+                    <input maxlength="150" type="text" class="form-control border-dark bg-light text-bg-dark bg-opacity-10" id="name-reg" name="name" value={{formInput.name}}>
+                </div>
+                <div class="mb-3">
+                    <label for="email-reg" class="form-label">Email</label>
+                    <input maxlength="255" type="text" class="form-control border-dark bg-light text-bg-dark bg-opacity-10" id="email-reg" name="email" value={{formInput.email}}>
+                </div>
+                <div class="mb-3">
+                    <label for="password-reg" class="form-label">Password</label>
+                    <input type="password" class="form-control border-dark bg-light text-bg-dark bg-opacity-10" id="password-reg" name="password">
+                </div>
+                <div class="mb-3">
+                    <label for="password-conf-reg" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control border-dark bg-light text-bg-dark bg-opacity-10" id="password-conf-reg" name="confirm">
+                </div>
+                <div class="mb-3 d-flex justify-content-center">
+                        <div id="captcha" class="g-recaptcha" data-sitekey={{captcha_key}}></div>
+                </div>
+                    {{#if error}}
+                    <div class="mb-3 alert alert-dark alert-dismissible fade show" role="alert">
+                        {{error}}
+                        {{#if reasons}}
+                            <ul>
+                            {{#each reasons}}
+                                <li>{{this}}</li>
+                            {{/each}}
+                            </ul>
+                        {{/if}}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {{/if}}
+                <div class="d-flex justify-content-center">
+                <button type="submit" class="m-auto w-75 btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

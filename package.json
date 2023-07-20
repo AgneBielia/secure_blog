@@ -1,0 +1,30 @@
+{
+  "name": "secure_software_blog",
+  "version": "1.0.0",
+  "description": "The aim of this project is to create a secure web-based blog system that mitigates the five most common security vulnerabilities: account enumeration, session hijacking, SQL injection, cross-site scripting, and cross-site request forgery. This project will utilize Node.js and related technologies.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js",
+    "build": "npm run build:db && npm run build:roles",
+    "build:db": "node db_init/init.js",
+    "build:roles": "node db_init/roles_init.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-handlebars": "^7.0.7",
+    "nodemon": "^2.0.22",
+    "pg": "^8.10.0",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.5.0"
+  }
+}
